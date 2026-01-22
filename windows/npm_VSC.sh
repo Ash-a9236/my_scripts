@@ -2,7 +2,6 @@
 
 # AUTHOR : ash_a9236 / ash-a9236
 # This script is my own creation and is made to install a temporary version of Node.js on an instance of Visual Studio Code to avoid any computer with installation restrictions
-# Passing this script as your own, using this script to brake the law or perfom malicious actions is completly forbidden (unless approved by the author)
 
 read -p "Enter the name of your drive (i.e. E) -> " DRIVE
 read -p "Enter the version of your node folder (i.e. v22.19.0) -> " NODE_V
