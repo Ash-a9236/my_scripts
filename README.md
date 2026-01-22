@@ -2,7 +2,7 @@
 Library of scripts to help with small tasks that take way too long to remember otherwise :P
 
 Author : ash-a9236
-See license for copywrite details
+See license for copyright details
 
 
 ## WINDOWS
