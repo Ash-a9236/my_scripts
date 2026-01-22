@@ -2,7 +2,6 @@
 
 # AUTHOR : ash_a9236 / ash-a9236
 # This script is my own creation and is made to simplify SSH connections in places where the port 22 might be blocked or just as a more convinient way to login with a key on a public computer to remove the hassle of creating a new ket
-# Passing this script as your own, using this script to brake the law or perfom malicious actions is completly forbidden (unless approved by the author)
 
 # DRIVE_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 # export HOME="$DRIVE_ROOT"
