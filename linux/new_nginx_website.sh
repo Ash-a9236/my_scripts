@@ -2,7 +2,6 @@
 
 # AUTHOR : ash_a9236 / ash-a9236
 # This script is my own creation and is made to automate the creation of a php slim website from an already made repository in /var/www
-# Passing this script as your own, using this script to brake the law or perfom malicious actions is completly forbidden (unless approved by the author)
 
 echo "Note that you need to be a sudoer user to be able to run this script"
 echo "This script assumes you are using a Linux-Nninx-MariaDB-PhpMyAdmin (LNMP) stack"
