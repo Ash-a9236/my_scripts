@@ -58,8 +58,64 @@ E:
   ...
 ```
 
-
 ### repo_auth
+
+Maks any repo as safe if they are either in the Documents folder of a USB drive or in htdocs of Wampoon server (LAMP stack).
+
+You need to have a portable USB with the following structure : 
+
+```
+E:
+  |_ .ssh
+  |_ Git_portable // where you will run the script
+  |_ Documents
+      |_ [your_repo]
+  |_ Wampoon
+      |_ htdocs
+            |_ [your_repo]
+  ...
+```
 
 
 ## LINUX
+
+Scripts that will only work on Linux or a portable usb drive made for Linux (tested on Debian 13 stable).
+
+### login
+
+Creates an SSH agent to connect to github through port 22 when the port might be blocked or when you are on a public computer. 
+<br>
+If you are on a public computer I recommend also adding the lifetime to that ssh key on the computer that you are using. It will not delete the key from github but simply flush the ssh agent on the computer after the set time if you forgot to log out.
+
+<br>
+
+You need to have either a portable USB with the following structure : 
+
+```
+E:
+  |_ .ssh
+      |_ ssh_key // created from github.com
+  |_ Git_portable // where you will run the script
+  ...
+```
+
+Or know the path to your .ssh folder (often held in C:/Users/username/) such as 
+
+```
+/home/user
+  |_ .ssh
+      |_ ssh_key // created from github.com
+  |_ Documents
+  |_ Downloads
+  ...
+```
+
+### new_nginx_website
+
+Creates the configuration for a website on localhost using a LNMP stack. Can also create the base folder for the website (though you might need to rerun the script if you create the website from it to enable the correct permissions on the files).
+
+You will need to have already installed : 
+
+- MariaDB
+- PhpMyAdmin
+
