@@ -30,7 +30,7 @@ E:
 Or know the path to your .ssh folder (often held in C:/Users/username/) such as 
 
 ```
-/home/user
+C:/Users/user_XXX
   |_ .ssh
       |_ ssh_key // created from github.com
   |_ Documents
