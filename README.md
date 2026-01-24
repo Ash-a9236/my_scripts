@@ -2,7 +2,7 @@
 Library of scripts to help with small tasks that take way too long to remember otherwise :P
 
 Author : ash-a9236
-See license for copywrite details
+See license for copyright details
 
 
 ## WINDOWS
@@ -30,7 +30,7 @@ E:
 Or know the path to your .ssh folder (often held in C:/Users/username/) such as 
 
 ```
-/home/user
+C:/Users/user_XXX
   |_ .ssh
       |_ ssh_key // created from github.com
   |_ Documents
