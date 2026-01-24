@@ -1,0 +1,7 @@
+PATH_TO_JENKINS="C:\Users\$USER\Downloads"
+INSTALLATION_DIRECTORY="D:\Programs"
+PATH_TO_LOGS="D:\Programs\Jenkins"
+JAVA_JDK_DIR="D:\Java_jdk_vXXXX"
+PORT="96"
+
+msiexec.exe /i $PATH_TO_JENKINS /qb /norestart INSTALLATIONDIR="$INSTALLATION_DIRECTORY" JAVA_HOME="$JAVA_JDK_DIR" PORT=80$PORT /L*v "$PATH_TO_LOGS\logfile.txt"
