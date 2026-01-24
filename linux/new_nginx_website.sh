@@ -2,7 +2,6 @@
 
 # AUTHOR : ash_a9236 / ash-a9236
 # This script is my own creation and is made to automate the creation of a php slim website from an already made repository in /var/www
-# Passing this script as your own, using this script to brake the law or perfom malicious actions is completly forbidden (unless approved by the author)
 
 echo "Note that you need to be a sudoer user to be able to run this script"
 echo "This script assumes you are using a Linux-Nninx-MariaDB-PhpMyAdmin (LNMP) stack"
@@ -22,7 +21,7 @@ fi
 echo "Your webiste will run on https://localhost:80XX. Note that 8083 is often reserved for phpmyadmin and that you cannot have two websites configured on the same port."
 read -p "Please enter the port number of the website (i.e. 96 for port 8096) -> " PORT
 
-read -p "Are you using slim php framework ? (Y/n) -> " USER_ANS_01\
+read -p "Are you using slim php framework ? (Y/n) -> " USER_ANS_01
 
 if [[ "$USER_ANS_01" == "Y" || "$USER_ANS_01" == "y" ]]; then
     echo "
@@ -95,8 +94,7 @@ else
             # Serve directly from public directory
             root /var/www/$WEBSITE_NAME/;
     
-            
-            # All other requests go to Slim
+            # All other requests go to there
             location / {
                 try_files $uri $uri/ =404;
             }   
@@ -140,3 +138,6 @@ for i in {1..3}; do
     echo "."
     sleep 1
 done
+
+echo "Done ! You can now go to localhost:80$PORT to see your website !"
+

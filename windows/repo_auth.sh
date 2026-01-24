@@ -2,7 +2,6 @@
 
 # AUTHOR : ash_a9236 / ash-a9236
 # This script is my own creation and is made to make a git see a repository as 'safe' while entering a relative path
-# Passing this script as your own, using this script to brake the law or perfom malicious actions is completly forbidden (unless approved by the author)
 
 read -p "Enter the name of your drive (i.e. E) -> " DRIVE
 
