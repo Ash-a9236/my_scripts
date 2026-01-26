@@ -1,4 +1,4 @@
-# my_scripts
+# automation_scripts
 Library of scripts to help with small tasks that take way too long to remember otherwise :P
 
 Author : ash-a9236
