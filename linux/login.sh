@@ -3,9 +3,6 @@
 # AUTHOR : ash_a9236 / ash-a9236
 # This script is my own creation and is made to simplify SSH connections in places where the port 22 might be blocked or just as a more convinient way to login with a key on a public computer to remove the hassle of creating a new ket
 
-# DRIVE_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
-# export HOME="$DRIVE_ROOT"
-# echo "HOME forced to $HOME"
 
 echo "Please consider the following : "
 echo "- You will be prompted to add a lifetime to your agent, it will be in minutes (minimum is therefore 1min)"
@@ -24,25 +21,26 @@ else
 fi
 
 echo "Reading ssh agent : Checking if ssh loaded..."
-sleep 1
 
 for i in {1..3}; do
     echo "."
     sleep 1
 done
 
+echo "
+Host github.com
+    HostName ssh.github.com
+    Port 443
+    User git
+" > ~/.ssh/config
+
+read -p "Please enter your ssh key id (i.e. id_00123) -> " SSH_KEY
 read -p "Are you in a portable USB ? (Y/n) -> " LOCATION_ANS
 
 if [[ "$LOCATION_ANS" == "Y" || "$LOCATION_ANS" == "y" ]]; then
     read -p "Please enter the drive letter (i.e. E) -> " DRIVE
-else
-    read -p  "Plesase enter the path to your .ssh folder (often under home/[username]/) : ommit the first '/' -> " DRIVE
-fi
 
-read -p "Please enter your ssh key id (i.e. id_00123) -> " SSH_KEY
-
-#if the key is not already added
-if ! ssh-add -l >/dev/null 2>&1; then
+    if ! ssh-add -l >/dev/null 2>&1; then
     echo "ssh agent empty : manually adding key to agent..."
     ssh-add /$DRIVE/.ssh/$SSH_KEY
 
@@ -54,16 +52,47 @@ if ! ssh-add -l >/dev/null 2>&1; then
         sleep 1
     done
 
-    if ! ssh-add -l | >/dev/null 2>&1; then
-        echo "ssh agent empty : script failed, try to run the command yourself"
-        echo "ssh-add /$DRIVE/.ssh/$SSH_KEY"
-        sleep 2
+        if ! ssh-add -l | >/dev/null 2>&1; then
+            echo "ssh agent empty : script failed, try to run the command yourself"
+            echo "ssh-add /$DRIVE/.ssh/$SSH_KEY"
+            sleep 2
+        else
+            echo "SSH AUTH SUCCESS"
+        fi
     else
         echo "SSH AUTH SUCCESS"
     fi
+
 else
-    echo "SSH AUTH SUCCESS"
+    read -p  "Plesase enter the path to your .ssh folder (often under home/[username]/) : ommit the first '/' -> " DRIVE
+
+    
+    if ! ssh-add -l >/dev/null 2>&1; then
+    echo "ssh agent empty : manually adding key to agent..."
+    ssh-add /$DRIVE/.ssh/$SSH_KEY
+
+    echo "Reading ssh agent : Checking if ssh loaded..."
+    sleep 1
+
+    for i in {1..3}; do
+        echo "."
+        sleep 1
+    done
+
+        if ! ssh-add -l | >/dev/null 2>&1; then
+            echo "ssh agent empty : script failed, try to run the command yourself"
+            echo "ssh-add $DRIVE/.ssh/$SSH_KEY"
+            sleep 2
+        else
+            echo "SSH AUTH SUCCESS"
+        fi
+    else
+        echo "SSH AUTH SUCCESS"
+    fi
 fi
+
+#if the key is not already added
+
 
 read -p "Do you wish to add a maximum lifetime to the agent (recommended if you are on a public computer) ? (Y/n) -> " USER_ANS_0
 
@@ -122,12 +151,13 @@ if [[ "$USER_ANS" == "Y" || "$USER_ANS" == "y" ]]; then
         echo "git config --global user.email"
 
     else
-        USERNAME_GIT=$(git config user.name 2>&1)
-
-        echo "USERNAME : $USERNAME_GIT"
+        echo "USERNAME : $(git config user.name 2>&1)"
         echo "EMAIL : $(git config user.email 2>&1)"
-        echo "\GIT CONFIGURATION SUCCESS, WELCOME $USERNAME_GIT"
+        echo "\GIT CONFIGURATION SUCCESS, WELCOME $(git config user.name 2>&1)"
     fi
+
+    echo "Testing connection to github:443 ..."
+    ssh -T git@github.com
 
 fi
 
