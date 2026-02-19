@@ -4,7 +4,7 @@
 # This script is my own creation and is made to automate the creation of a php slim website from an already made repository in /var/www
 
 echo "Note that you need to be a sudoer user to be able to run this script"
-echo "This script assumes you are using a Linux-Nninx-MariaDB-PhpMyAdmin (LNMP) stack"
+echo "This script assumes you are using a Linux-Nginx-MariaDB-PhpMyAdmin (LEMP) stack"
 echo ""
 
 read -p "Is the main folder or git repo already in /var/www ? (Y/n) -> " USER_ANS_00
